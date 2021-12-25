@@ -10,3 +10,11 @@ to {
   opacity:1;
   transform:none
 }`;
+
+export const fadeIn = keyframes`
+from {
+  opacity:0;
+}
+to {
+  opacity:1;
+}`;
