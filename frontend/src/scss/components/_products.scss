@@ -292,7 +292,7 @@
   transition: all 0.35s ease;
   padding: 0;
   border-radius: 50%;
-  color: $primary-color;
+  color: $dark-text;
   background-color: $white-color;
 
   &::before {
@@ -329,6 +329,7 @@
   }
 
   &.added-to-wishlist {
+    color: $primary-color;
     &::before {
       content: '\f005';
     }
