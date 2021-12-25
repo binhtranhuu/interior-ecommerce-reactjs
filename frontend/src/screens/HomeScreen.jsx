@@ -8,6 +8,7 @@ import { listProducts } from '../redux/actions/productActions';
 import SlickCarousel from '../components/Common/SlickCarousel';
 import { fadeIn, fadeInRightShorter, fadeInUpShorter } from '../utils/keyFrames';
 import TrendyProducts from '../components/Layout/Home/TrendyProducts';
+import RecentProducts from '../components/Layout/Home/RecentProducts';
 
 function HomeScreen(props) {
   const dispatch = useDispatch();
@@ -269,6 +270,10 @@ function HomeScreen(props) {
           </div>
         </div>
       </div>
+
+      <Reveal keyframes={fadeIn} delay={100} duration={1500} triggerOnce>
+        <RecentProducts />
+      </Reveal>
     </div>
   );
 }
