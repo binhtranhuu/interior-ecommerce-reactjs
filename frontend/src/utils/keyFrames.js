@@ -11,6 +11,17 @@ to {
   transform:none
 }`;
 
+export const fadeInRightShorter = keyframes`
+from {
+  opacity: 0;
+  transform: translate(-50px,0);
+  transform-origin: 0 0;
+}
+to {
+  opacity: 1;
+  transform: none
+}`;
+
 export const fadeIn = keyframes`
 from {
   opacity:0;

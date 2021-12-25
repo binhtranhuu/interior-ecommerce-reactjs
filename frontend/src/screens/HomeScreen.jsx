@@ -6,7 +6,7 @@ import Product from '../components/Product/Product';
 import ProductSkeleton from '../components/Skeleton/ProductSkeleton';
 import { listProducts } from '../redux/actions/productActions';
 import SlickCarousel from '../components/Common/SlickCarousel';
-import { fadeIn, fadeInUpShorter } from '../utils/keyFrames';
+import { fadeIn, fadeInRightShorter, fadeInUpShorter } from '../utils/keyFrames';
 import TrendyProducts from '../components/Layout/Home/TrendyProducts';
 
 function HomeScreen(props) {
@@ -159,6 +159,116 @@ function HomeScreen(props) {
       <Reveal keyframes={fadeIn} delay={100} duration={1500} triggerOnce>
         <TrendyProducts />
       </Reveal>
+
+      <div className="container mt-8">
+        <div className="heading mb-4">
+          <h2 className="title">Shop by Categories</h2>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-6 col-lg-4">
+            <div className="banner">
+              <figure className="mb-0">
+                <LazyLoadImage
+                  alt="banner"
+                  src="images/banners/banner-1.jpg"
+                  threshold={200}
+                  width="376"
+                  height="auto"
+                  effect="blur"
+                />
+              </figure>
+
+              <div className="banner__content">
+                <a className="banner__link" href="/">
+                  <h3 className="banner__title mb-0">Home Decor</h3>
+                  <span className="banner__text">
+                    Shop Now<i className="las la-arrow-right ml-2"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm-6 col-lg-4 order-lg-last">
+            <Reveal keyframes={fadeInRightShorter} delay={150} duration={1000} triggerOnce>
+              <div className="banner">
+                <figure className="mb-0">
+                  <LazyLoadImage
+                    alt="banner"
+                    src="images/banners/banner-4.jpg"
+                    threshold={200}
+                    width="376"
+                    height="auto"
+                    effect="blur"
+                  />
+                </figure>
+
+                <div className="banner__content">
+                  <a className="banner__link" href="/">
+                    <h3 className="banner__title mb-0">Living Room</h3>
+                    <span className="banner__text">
+                      Shop Now<i className="las la-arrow-right ml-2"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="col-sm-12 col-lg-4">
+            <div className="row">
+              <div className="col-lg-12 col-sm-6 col-xs-12">
+                <div className="banner">
+                  <figure className="mb-0">
+                    <LazyLoadImage
+                      alt="banner"
+                      src="images/banners/banner-2.jpg"
+                      threshold={200}
+                      width="376"
+                      height="auto"
+                      effect="blur"
+                    />
+                  </figure>
+
+                  <div className="banner__content">
+                    <a className="banner__link" href="/">
+                      <h3 className="banner__title mb-0">Kitchen & Utensil</h3>
+                      <span className="banner__text">
+                        Shop Now<i className="las la-arrow-right ml-2"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-12 col-sm-6 col-xs-12">
+                <div className="banner">
+                  <figure className="mb-0">
+                    <LazyLoadImage
+                      alt="banner"
+                      src="images/banners/banner-3.jpg"
+                      threshold={200}
+                      width="376"
+                      height="auto"
+                      effect="blur"
+                    />
+                  </figure>
+
+                  <div className="banner__content">
+                    <a className="banner__link" href="/">
+                      <h3 className="banner__title mb-0">Lighting</h3>
+                      <span className="banner__text">
+                        Shop Now<i className="las la-arrow-right ml-2"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
