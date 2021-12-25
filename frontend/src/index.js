@@ -5,6 +5,7 @@ import App from './App';
 import './scss/reset.scss';
 import './scss/line-awesome.scss';
 import 'bootstrap/scss/bootstrap.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './scss/styles.scss';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
