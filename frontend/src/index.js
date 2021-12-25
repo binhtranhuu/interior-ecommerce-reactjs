@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './scss/reset.scss';
+import './scss/line-awesome.scss';
+import 'bootstrap/scss/bootstrap.scss';
+import './scss/styles.scss';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
