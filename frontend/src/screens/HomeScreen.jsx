@@ -6,7 +6,7 @@ import Product from '../components/Product/Product';
 import ProductSkeleton from '../components/Skeleton/ProductSkeleton';
 import { listProducts } from '../redux/actions/productActions';
 import SlickCarousel from '../components/Common/SlickCarousel';
-import { fadeIn, fadeInRightShorter, fadeInUpShorter } from '../utils/keyFrames';
+import { fadeIn, fadeInLeft, fadeInRightShorter, fadeInUpShorter } from '../utils/keyFrames';
 import TrendyProducts from '../components/Layout/Home/TrendyProducts';
 import RecentProducts from '../components/Layout/Home/RecentProducts';
 
@@ -273,6 +273,78 @@ function HomeScreen(props) {
 
       <Reveal keyframes={fadeIn} delay={100} duration={1500} triggerOnce>
         <RecentProducts />
+      </Reveal>
+
+      <div className="container">
+        <hr />
+        <div className="row justify-content-center">
+          <div className="col-md-4 col-sm-6">
+            <Reveal keyframes={fadeInLeft} delay={150} duration={1000} triggerOnce>
+              <div className="icon-box text-center bg-white">
+                <span className="icon-box__icon text-dark">
+                  <i className="las la-rocket"></i>
+                </span>
+                <div className="icon-box__content">
+                  <h3 className="icon-box__title">Payment & Delivery</h3>
+                  <p>Free shipping for orders over $50</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="col-md-4 col-sm-6">
+            <Reveal keyframes={fadeInLeft} delay={180} duration={1200} triggerOnce>
+              <div className="icon-box text-center bg-white">
+                <span className="icon-box__icon text-dark">
+                  <i className="las la-undo-alt"></i>
+                </span>
+                <div className="icon-box__content">
+                  <h3 className="icon-box__title">Return & Refund</h3>
+                  <p>Free 100% money back guarantee</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="col-md-4 col-sm-6">
+            <Reveal keyframes={fadeInLeft} delay={200} duration={1500} triggerOnce>
+              <div className="icon-box text-center bg-white">
+                <span className="icon-box__icon text-dark">
+                  <i className="las la-life-ring"></i>
+                </span>
+                <div className="icon-box__content">
+                  <h3 className="icon-box__title">Quality Support</h3>
+                  <p>Alway online feedback 24/7</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+
+      <Reveal keyframes={fadeInRightShorter} delay={150} duration={1000} triggerOnce>
+        <div className="cta pt-4 pb-4" style={{ backgroundImage: 'url(images/cta.jpg)' }}>
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-10 col-lg-9 col-xl-8">
+                <div className="row no-gutters flex-column flex-sm-row align-items-sm-center">
+                  <div className="col text-center text-sm-left">
+                    <h3 className="cta__title text-white">Sign Up & Get 10% Off</h3>
+                    <p className="cta__desc text-white">
+                      Molla presents the best in interior design
+                    </p>
+                  </div>
+                  <div className="col-auto d-flex justify-content-center">
+                    <a href="/" className="btn btn-outline-white">
+                      <span>SIGN UP</span>
+                      <i className="las la-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Reveal>
     </div>
   );
