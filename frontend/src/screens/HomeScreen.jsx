@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux';
 import Reveal from 'react-awesome-reveal';
-import Product from '../components/Product/Product';
-import ProductSkeleton from '../components/Skeleton/ProductSkeleton';
 import { listProducts } from '../redux/actions/productActions';
 import SlickCarousel from '../components/Common/SlickCarousel';
 import { fadeIn, fadeInLeft, fadeInRightShorter, fadeInUpShorter } from '../utils/keyFrames';
