@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumb from '../components/Common/Breadcrumb';
 import ProductDetail from '../components/Product/ProductDetail';
 import ProductGallery from '../components/Product/ProductGallery';
+import ProductInfo from '../components/Product/ProductInfo';
 import { detailsProduct } from '../redux/actions/productActions';
 
 function ProductScreen(props) {
@@ -37,7 +38,7 @@ function ProductScreen(props) {
               </div>
             </div>
             <div className="product__details-bottom">
-              ProductInfo
+              <ProductInfo product={product} />
             </div>
           </div>
         )}

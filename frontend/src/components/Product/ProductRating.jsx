@@ -25,7 +25,8 @@ function ProductRating(props) {
       </div>
 
       <span className="ratings__text">
-        {caption ? <span>{caption}</span> : <span>{`( ${numReviews} Reviews )`}</span>}
+        {caption ? <span>{caption}</span> : ''}
+        {numReviews ? <span>{`( ${numReviews} Reviews )`}</span> : ''}
       </span>
     </div>
   );
