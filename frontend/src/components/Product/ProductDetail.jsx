@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Qty from '../Common/Qty';
 import Share from '../Common/Share';
 import ProductRating from './ProductRating';
+import ProductSticky from './ProductSticky';
 
 function ProductDetail(props) {
   const { product } = props;
+  const ref = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
+
+  function scrollHandler() {
+    let sticky = ref.current.querySelector('.product__stick');
+    if (sticky.classList.contains('d-none') && ref.current.getBoundingClientRect().bottom < 0) {
+      sticky.classList.remove('d-none');
+      return;
+    }
+
+    if (!sticky.classList.contains('d-none') && ref.current.getBoundingClientRect().bottom > 0) {
+      sticky.classList.add('d-none');
+    }
+  }
 
   return (
-    <div className="product__detail">
+    <div ref={ref} className="product__detail">
       <h1 className="product__title">
         <Link to={`/product/${product.slug}`}>{product.name}</Link>
       </h1>
@@ -57,6 +79,8 @@ function ProductDetail(props) {
       </div>
 
       <Share url={window.location.href} facebook twitter linkedin />
+
+      <ProductSticky product={product} />
     </div>
   );
 }
