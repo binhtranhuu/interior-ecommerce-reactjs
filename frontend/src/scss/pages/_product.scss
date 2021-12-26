@@ -1,3 +1,128 @@
+.product__details-wrapper {
+  margin-bottom: 5rem;
+}
+
+.product__details-top {
+  margin-bottom: 3rem;
+}
+
+// Product Detail
+.product__detail {
+  text-align: left;
+
+  .product__title {
+    font-weight: 400;
+    font-size: 2.4rem;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.2rem;
+    margin-top: -0.5rem;
+    padding-right: 1rem;
+  }
+
+  .product__rating {
+    display: block;
+    margin-bottom: 1.3rem;
+
+    .ratings__wrapper {
+      justify-content: start;
+    }
+  }
+
+  .product__price {
+    font-size: 2.4rem;
+    justify-content: start;
+  }
+
+  .product__category {
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+}
+
+.product__desc {
+  p:first-child {
+    margin-bottom: 1.6rem;
+  }
+}
+
+.product__quantity-wrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin-bottom: 1rem;
+
+  span {
+    display: inline-block;
+    width: 67px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+
+  .product__quantity {
+    max-width: 131px;
+    flex: 0 0 131px;
+  }
+}
+
+.product__detail-action {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin-bottom: 2rem;
+
+  .btn-cart {
+    padding: 1rem 1.5rem;
+    max-width: 198px;
+    min-width: 150px;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+  }
+
+  .btn-wishlist {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 1rem 2rem;
+    max-width: 198px;
+    border-bottom: none;
+  }
+}
+
+.btn.btn-spinner {
+  min-width: 0;
+  color: #333333;
+  padding: 1.5rem 0.4rem;
+  font-size: 1rem;
+  border: none;
+  background: none;
+
+  i {
+    margin: 0 !important;
+  }
+
+  &:hover,
+  &:focus {
+    color: $primary-color;
+  }
+}
+
+.product__detail-footer {
+  color: $paragraph-text;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0.7rem;
+  border-top: 1px solid $border-color;
+  padding-bottom: 0.7rem;
+  justify-content: space-between;
+
+  > * {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
 // Product Gallery
 .product__gallery {
   display: flex;

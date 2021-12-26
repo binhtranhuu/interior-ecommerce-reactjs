@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumb from '../components/Common/Breadcrumb';
+import ProductDetail from '../components/Product/ProductDetail';
 import ProductGallery from '../components/Product/ProductGallery';
 import { detailsProduct } from '../redux/actions/productActions';
 
@@ -31,7 +32,7 @@ function ProductScreen(props) {
                   <ProductGallery product={product} />
                 </div>
                 <div className="col-md-6">
-                  ProductDetail
+                  <ProductDetail product={product} />
                 </div>
               </div>
             </div>
