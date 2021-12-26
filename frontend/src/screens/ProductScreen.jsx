@@ -4,7 +4,9 @@ import Breadcrumb from '../components/Common/Breadcrumb';
 import ProductDetail from '../components/Product/ProductDetail';
 import ProductGallery from '../components/Product/ProductGallery';
 import ProductInfo from '../components/Product/ProductInfo';
-import { detailsProduct } from '../redux/actions/productActions';
+import ProductRelated from '../components/Product/ProductRelated';
+import ProductSkeleton from '../components/Skeleton/ProductSkeleton';
+import { detailsProduct, listProductsRelated } from '../redux/actions/productActions';
 
 function ProductScreen(props) {
   const { slug } = props.match.params;
@@ -13,8 +15,16 @@ function ProductScreen(props) {
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
 
+  const productListRelated = useSelector((state) => state.productListRelated);
+  const {
+    products: productsRelated,
+    loading: loadingRelated,
+    error: errorRelated,
+  } = productListRelated;
+
   useEffect(() => {
     dispatch(detailsProduct(slug));
+    dispatch(listProductsRelated(slug));
   }, [dispatch, slug]);
 
   return (
@@ -39,6 +49,27 @@ function ProductScreen(props) {
             </div>
             <div className="product__details-bottom">
               <ProductInfo product={product} />
+
+              {loadingRelated ? (
+                <div className="row">
+                  <div className="heading mb-2 mt-5">
+                    <h2 className="title">You May Also Like</h2>
+                  </div>
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
+                    <div key={index} className="col-6 col-md-4 col-lg-3">
+                      <ProductSkeleton />
+                    </div>
+                  ))}
+                </div>
+              ) : errorRelated ? (
+                <div>{errorRelated}</div>
+              ) : (
+                <ProductRelated
+                  product={slug}
+                  products={productsRelated}
+                  hasMore={productsRelated.length === 8 ? true : false}
+                />
+              )}
             </div>
           </div>
         )}
