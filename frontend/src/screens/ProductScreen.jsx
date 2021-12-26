@@ -5,6 +5,7 @@ import ProductDetail from '../components/Product/ProductDetail';
 import ProductGallery from '../components/Product/ProductGallery';
 import ProductInfo from '../components/Product/ProductInfo';
 import ProductRelated from '../components/Product/ProductRelated';
+import ProductDetailSkeleton from '../components/Skeleton/ProductDetailSkeleton';
 import ProductSkeleton from '../components/Skeleton/ProductSkeleton';
 import { detailsProduct, listProductsRelated } from '../redux/actions/productActions';
 
@@ -32,7 +33,7 @@ function ProductScreen(props) {
       <Breadcrumb />
       <div className="container">
         {loading ? (
-          <div>Loading...</div>
+          <ProductDetailSkeleton />
         ) : error ? (
           <div>{error}</div>
         ) : (

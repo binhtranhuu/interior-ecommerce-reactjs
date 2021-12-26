@@ -53,6 +53,7 @@
   opacity: 0;
   width: 100%;
   height: auto;
+  z-index: 3;
   transition: opacity 0.3s ease;
 }
 
@@ -250,7 +251,7 @@
   &:hover,
   &:focus {
     outline: none !important;
-    color: $white-color;
+    color: $white-color !important;
     background-color: $primary-color;
 
     span {
@@ -330,9 +331,6 @@
 
   &.added-to-wishlist {
     color: $primary-color;
-    &::before {
-      content: '\f005';
-    }
   }
 }
 
@@ -391,6 +389,12 @@
   align-items: center;
   justify-content: center;
 
+  .ratings__text {
+    color: $product-price-out;
+    letter-spacing: -0.01em;
+    margin-left: 0.8rem;
+  }
+
   .ratings {
     position: relative;
 
@@ -430,14 +434,4 @@
       }
     }
   }
-}
-
-.lazy-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: $bg-overlay;
-  z-index: 1;
 }
