@@ -8,6 +8,9 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_RELATED_FAIL,
+  PRODUCT_RELATED_LOADMORE_FAIL,
+  PRODUCT_RELATED_LOADMORE_REQUEST,
+  PRODUCT_RELATED_LOADMORE_SUCCESS,
   PRODUCT_RELATED_REQUEST,
   PRODUCT_RELATED_SUCCESS,
 } from '../constants/productConstants';
@@ -49,5 +52,19 @@ export const listProductsRelated =
       dispatch({ type: PRODUCT_RELATED_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: PRODUCT_RELATED_FAIL, payload: catchErrors(error) });
+    }
+  };
+
+export const listProductsRelatedMore =
+  (slug, page = 1) =>
+  async (dispatch) => {
+    dispatch({ type: PRODUCT_RELATED_LOADMORE_REQUEST, payload: slug });
+    try {
+      const { data } = await Axios.get(
+        `${process.env.REACT_APP_API_ENDPOINT}/products/related/${slug}?pageNumber=${page}`
+      );
+      dispatch({ type: PRODUCT_RELATED_LOADMORE_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({ type: PRODUCT_RELATED_LOADMORE_FAIL, payload: catchErrors(error) });
     }
   };

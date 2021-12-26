@@ -6,6 +6,10 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_RELATED_FAIL,
+  PRODUCT_RELATED_LOADMORE_FAIL,
+  PRODUCT_RELATED_LOADMORE_REQUEST,
+  PRODUCT_RELATED_LOADMORE_RESET,
+  PRODUCT_RELATED_LOADMORE_SUCCESS,
   PRODUCT_RELATED_REQUEST,
   PRODUCT_RELATED_SUCCESS,
 } from '../constants/productConstants';
@@ -50,6 +54,24 @@ export const productListRelatedReducer = (state = { loading: true, products: [] 
       };
     case PRODUCT_RELATED_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productListRelatedMoreReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_RELATED_LOADMORE_REQUEST:
+      return { loading: true };
+    case PRODUCT_RELATED_LOADMORE_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload,
+      };
+    case PRODUCT_RELATED_LOADMORE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_RELATED_LOADMORE_RESET:
+      return {};
     default:
       return state;
   }

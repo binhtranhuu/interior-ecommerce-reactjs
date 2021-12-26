@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import {
   productDetailsReducer,
   productListReducer,
+  productListRelatedMoreReducer,
   productListRelatedReducer,
 } from './reducers/productReducers';
 
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   productListRelated: productListRelatedReducer,
+  productListRelatedMore: productListRelatedMoreReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
