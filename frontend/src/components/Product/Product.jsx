@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ProductRating from './ProductRating';
 
@@ -24,7 +25,7 @@ function Product({ product }) {
           ''
         )}
 
-        <a href="/">
+        <Link to={`/product/${product.slug}`}>
           <LazyLoadImage
             alt={product.name}
             src={product.images[0]}
@@ -32,7 +33,19 @@ function Product({ product }) {
             effect="black and white"
             wrapperClassName="product__image"
           />
-        </a>
+
+          {product.images.length >= 2 ? (
+            <LazyLoadImage
+              alt={product.name}
+              src={product.images[1]}
+              threshold={500}
+              effect="black and white"
+              wrapperClassName="product__image-hover"
+            />
+          ) : (
+            ''
+          )}
+        </Link>
 
         <div className="product__action-vertical">
           <a href="/" className="btn-product-icon btn-wishlist btn-expandable">
@@ -57,14 +70,14 @@ function Product({ product }) {
         <div className="product__category">
           {product.categories.map((category, index) => (
             <React.Fragment key={index}>
-              <a href={`/category/${category.slug}`}>{category.name}</a>
+              <Link to={`/category/${category.slug}`}>{category.name}</Link>
               {index < product.categories.length - 1 ? ', ' : ''}
             </React.Fragment>
           ))}
         </div>
 
         <h3 className="product__title">
-          <a href={`/product/${product.slug}`}>{product.name}</a>
+          <Link to={`/product/${product.slug}`}>{product.name}</Link>
         </h3>
 
         {product.countInStock === 0 ? (

@@ -41,3 +41,16 @@ export const listProducts = async (req, res) => {
     res.status(500).send({ message: 'No products found' });
   }
 };
+
+export const detailsProduct = async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const product = await Product.findOne({ slug }).populate('categories');
+    if (!product) {
+      res.status(404).send({ message: 'No product found' });
+    }
+    res.send(product);
+  } catch (error) {
+    res.status(500).send({ message: 'No product found' });
+  }
+};
