@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 
 function SlickCarousel(props) {
   const { adClass, options } = props;
+  const slickRef = useRef(null);
+
   const defaultOptions = {
     dots: true,
     infinite: true,
@@ -15,8 +17,15 @@ function SlickCarousel(props) {
 
   let settings = Object.assign({}, defaultOptions, options);
 
+  useEffect(() => {
+    if (props.onSlickRef) {
+      props.onSlickRef(slickRef);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slickRef]);
+
   return (
-    <Slider className={adClass} {...settings}>
+    <Slider ref={slickRef} className={adClass} {...settings}>
       {props.children}
     </Slider>
   );
