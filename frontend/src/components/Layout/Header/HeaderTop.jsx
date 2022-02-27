@@ -1,6 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signout } from '../../../redux/actions/userActions';
 
 function HeaderTop(props) {
+  const dispatch = useDispatch();
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  function handleSignOut(e) {
+    e.preventDefault();
+    dispatch(signout());
+  }
   return (
     <div className="header__top">
       <div className="container">
@@ -57,11 +68,57 @@ function HeaderTop(props) {
                 <li>
                   <a href="/">Contact Us</a>
                 </li>
-                <li>
-                  <a href="/">
-                    <i className="las la-user"></i>Login
-                  </a>
-                </li>
+                {userInfo ? (
+                  <li className="header__dropdown user-signin">
+                    <Link to="/profile">
+                      <i className="las la-user"></i>Hi, {userInfo.name}
+                    </Link>
+                    <ul className="header__menu">
+                      <li>
+                        <a href="/">Profile</a>
+                      </li>
+                      <li>
+                        <a href="/">Order history</a>
+                      </li>
+                      <li>
+                        <a href="/" onClick={handleSignOut}>
+                          Sign out
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/signin">
+                      <i className="las la-user"></i>Login
+                    </Link>
+                  </li>
+                )}
+
+                {userInfo && userInfo.isAdmin && (
+                  <li className="header__dropdown user-signin">
+                    <Link to="/profile">
+                      <i className="las la-user"></i>Admin
+                    </Link>
+                    <ul className="header__menu">
+                      <li>
+                        <a href="/">Dashboard</a>
+                      </li>
+                      <li>
+                        <a href="/">Products</a>
+                      </li>
+                      <li>
+                        <a href="/">Orders</a>
+                      </li>
+                      <li>
+                        <a href="/">Users</a>
+                      </li>
+                      <li>
+                        <a href="/">Support</a>
+                      </li>
+                    </ul>
+                  </li>
+                )}
               </ul>
             </li>
           </ul>
