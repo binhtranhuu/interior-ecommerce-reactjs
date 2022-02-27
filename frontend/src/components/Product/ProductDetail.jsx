@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../../redux/actions/cartActions';
 import Qty from '../Common/Qty';
 import Share from '../Common/Share';
 import ProductRating from './ProductRating';
@@ -7,7 +9,10 @@ import ProductSticky from './ProductSticky';
 
 function ProductDetail(props) {
   const { product } = props;
+  const [qty, setQty] = useState(1);
   const ref = useRef(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
@@ -16,6 +21,12 @@ function ProductDetail(props) {
       window.removeEventListener('scroll', scrollHandler);
     };
   }, []);
+
+  const addToCartHandler = (e) => {
+    e.preventDefault();
+    if (product.countInStock !== 0 && product.countInStock >= qty)
+      dispatch(addToCart(product.slug, qty));
+  };
 
   function scrollHandler() {
     let sticky = ref.current.querySelector('.product__stick');
@@ -54,10 +65,14 @@ function ProductDetail(props) {
       </div>
       <div className="product__quantity-wrapper">
         <span>Qty:</span>
-        <Qty />
+        <Qty changeQty={setQty} max={product.countInStock} value={qty} />
       </div>
       <div className="product__detail-action">
-        <a href="/" className="btn-product btn-cart">
+        <a
+          href="/"
+          className={`btn-product btn-cart ${product.countInStock === 0 ? 'btn-disabled' : ''}`}
+          onClick={addToCartHandler}
+        >
           <span>add to cart</span>
         </a>
 

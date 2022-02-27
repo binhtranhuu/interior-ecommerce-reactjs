@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ProductRating from './ProductRating';
+import { addToCart } from '../../redux/actions/cartActions';
 
 function Product({ product }) {
+  const dispatch = useDispatch();
+
+  function addToCartHandler(e) {
+    e.preventDefault();
+
+    dispatch(addToCart(product.slug, 1));
+  }
+
   return (
     <div className="product">
       <figure className="product__media">
@@ -58,7 +68,11 @@ function Product({ product }) {
         </div>
 
         <div className="product__action">
-          <a href="/" className="btn-product btn-cart">
+          <a
+            href="/"
+            className={`btn-product btn-cart ${product.countInStock === 0 && 'btn-disabled'}`}
+            onClick={addToCartHandler}
+          >
             <span>add to cart</span>
           </a>
         </div>

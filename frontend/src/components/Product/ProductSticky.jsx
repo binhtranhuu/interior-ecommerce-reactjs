@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import Qty from '../Common/Qty';
+import { addToCart } from '../../redux/actions/cartActions';
 
 function ProductSticky(props) {
   const { product } = props;
+  const [qty, setQty] = useState(1);
+
+  const dispatch = useDispatch();
+
+  function addToCartHandler(e) {
+    e.preventDefault();
+    dispatch(addToCart(product.slug, qty));
+  }
+
   return (
     <div className="product__stick d-none">
       <div className="container">
@@ -39,10 +50,16 @@ function ProductSticky(props) {
               <div className="product__price">${product.price.toFixed(2)}</div>
             )}
 
-            <Qty />
+            <Qty changeQty={setQty} max={product.countInStock} value={qty} />
 
             <div className="product__detail-action">
-              <a href="/" className="btn-product btn-cart">
+              <a
+                href="/"
+                className={`btn-product btn-cart ${
+                  product.countInStock === 0 ? 'btn-disabled' : ''
+                }`}
+                onClick={addToCartHandler}
+              >
                 <span>add to cart</span>
               </a>
               <a href="/" className="btn-product btn-wishlist"></a>
